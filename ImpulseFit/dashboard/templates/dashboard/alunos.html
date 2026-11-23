@@ -1,0 +1,145 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impulse Fit | Alunos</title>
+    <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}?v=5">
+</head>
+<body>
+
+<div class="container">
+    <aside class="sidebar">
+        <div class="logo">IMPULSE <span>FIT</span></div>
+        <p class="menu-titulo">MENU PRINCIPAL</p>
+
+        <nav>
+            <a href="/">▦ Dashboard</a>
+            <a href="/alunos/" class="ativo">♙ Alunos</a>
+            <a href="#">▣ Matrículas</a>
+            <a href="#">R$ Financeiro</a>
+            <a href="#">⚑ Treinos</a>
+            <a href="#">▤ Produtos</a>
+            <a href="#">▥ Relatórios</a>
+            <a href="#">⚙ Configurações</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <span class="status"></span>
+            Sistema Impulse Fit
+            <small>Gestão de academia</small>
+        </div>
+    </aside>
+
+    <main class="conteudo">
+        <header class="topbar">
+            <div>
+                <h2>Alunos</h2>
+                <p>Gerenciamento de alunos da academia</p>
+            </div>
+            <div class="usuario">
+                <div class="avatar">A</div>
+                <div>
+                    <strong>Administrador</strong>
+                    <small>Gestor</small>
+                </div>
+            </div>
+        </header>
+
+        <section class="boas-vindas">
+            <div>
+                <span class="subtitulo">GESTÃO DE ALUNOS</span>
+                <h1>Gerenciamento de <span>Alunos</span></h1>
+                <p>Consulte e organize os alunos cadastrados na academia.</p>
+            </div>
+        </section>
+
+        <section class="alunos-acoes">
+            <div>
+                <h2>Lista de alunos</h2>
+                <p>Consulte os registros da academia.</p>
+            </div>
+            <button class="btn-novo" type="button" id="abrirFormulario">
+                + Novo aluno
+            </button>
+        </section>
+
+        <section class="painel tabela-painel">
+            <div class="pesquisa">
+                <input type="search" id="pesquisaAluno"
+                       placeholder="Pesquisar aluno pelo nome...">
+            </div>
+
+            <div class="tabela-container">
+                <table class="tabela-alunos">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                            <th>Plano</th>
+                            <th>Matrícula</th>
+                            <th>Situação</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaAlunos">
+                        <tr>
+                            <td colspan="6" class="sem-alunos">
+                                Nenhum aluno cadastrado.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer class="rodape">
+            Impulse Fit © 2026 — Sistema de Gestão de Academia
+        </footer>
+    </main>
+</div>
+
+<div class="modal" id="modalAluno">
+    <div class="modal-conteudo">
+        <div class="modal-cabecalho">
+            <div>
+                <h2>Novo aluno</h2>
+                <p>Preencha os dados para cadastrar.</p>
+            </div>
+            <button type="button" class="fechar-modal"
+                    id="fecharFormulario">&times;</button>
+        </div>
+
+        <form id="formAluno">
+            <label>Nome completo</label>
+            <input type="text" id="nomeAluno" required
+                   placeholder="Digite o nome do aluno">
+
+            <label>Telefone</label>
+            <input type="tel" id="telefoneAluno" required
+                   placeholder="(00) 00000-0000">
+
+            <label>Plano</label>
+            <select id="planoAluno" required>
+                <option value="">Selecione um plano</option>
+                <option value="Mensal">Mensal</option>
+                <option value="Diária">Diária</option>
+                <option value="3 dias por semana">3 dias por semana</option>
+            </select>
+
+            <label>Data da matrícula</label>
+            <input type="date" id="dataAluno" required>
+
+            <div class="modal-botoes">
+                <button type="button" class="btn-cancelar"
+                        id="cancelarFormulario">Cancelar</button>
+                <button type="submit" class="btn-novo">Salvar aluno</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="{% static 'dashboard/alunos.js' %}?v=2"></script>
+</body>
+</html>

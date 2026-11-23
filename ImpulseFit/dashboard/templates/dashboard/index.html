@@ -1,0 +1,154 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Impulse Fit | Dashboard</title>
+
+<link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}?v=3"></head>
+
+<body>
+
+    <div class="container">
+
+        <aside class="sidebar">
+
+            <div class="logo">
+                IMPULSE <span>FIT</span>
+            </div>
+
+            <p class="menu-titulo">MENU PRINCIPAL</p>
+
+            <nav>
+                <a href="#" class="ativo">
+                    <span>▦</span> Dashboard
+                </a>
+
+                <a href="#"><span>♙</span> Alunos</a>
+                <a href="#"><span>▣</span> Matrículas</a>
+                <a href="#"><span>R$</span> Financeiro</a>
+                <a href="#"><span>⚑</span> Treinos</a>
+                <a href="#"><span>▤</span> Produtos</a>
+                <a href="#"><span>▥</span> Relatórios</a>
+                <a href="#"><span>⚙</span> Configurações</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <span class="status"></span>
+                Sistema Impulse Fit
+                <small>Gestão de academia</small>
+            </div>
+
+        </aside>
+
+        <main class="conteudo">
+
+            <header class="topbar">
+                <div>
+                    <h2>Dashboard</h2>
+                    <p>Visão geral da academia</p>
+                </div>
+
+                <div class="usuario">
+                    <div class="avatar">A</div>
+                    <div>
+                        <strong>Administrador</strong>
+                        <small>Gestor</small>
+                    </div>
+                </div>
+            </header>
+
+            <section class="boas-vindas">
+                <div>
+                    <span class="subtitulo">PAINEL DE CONTROLE</span>
+                    <h1>Bem-vindo ao <span>Impulse Fit!</span></h1>
+                    <p>Acompanhe o desempenho e os indicadores da sua academia.</p>
+                </div>
+            </section>
+
+            <section class="secao-titulo">
+                <h2>Indicadores gerais</h2>
+                <p>Resumo da sua academia</p>
+            </section>
+
+            <section class="cards">
+
+                <div class="card">
+                    <div class="card-topo">
+                        <p>Total de alunos</p>
+                        <span class="icone">♙</span>
+                    </div>
+                    <h3>0</h3>
+                    <small>Alunos cadastrados</small>
+                </div>
+
+                <div class="card">
+                    <div class="card-topo">
+                        <p>Alunos ativos</p>
+                        <span class="icone">✓</span>
+                    </div>
+                    <h3>0</h3>
+                    <small>Matrículas ativas</small>
+                </div>
+
+                <div class="card">
+                    <div class="card-topo">
+                        <p>Mensalidades recebidas</p>
+                        <span class="icone">R$</span>
+                    </div>
+                    <h3 class="destaque">R$ 0,00</h3>
+                    <small>Valores recebidos</small>
+                </div>
+
+                <div class="card">
+                    <div class="card-topo">
+                        <p>Produtos cadastrados</p>
+                        <span class="icone">▤</span>
+                    </div>
+                    <h3>0</h3>
+                    <small>Itens no estoque</small>
+                </div>
+
+            </section>
+
+            <section class="painel-inferior">
+
+                <div class="painel">
+                    <div class="painel-cabecalho">
+                        <h3>Atividades recentes</h3>
+                        <span>Últimas atualizações</span>
+                    </div>
+
+                    <div class="mensagem-vazia">
+                        <span>▦</span>
+                        <p>Nenhuma atividade registrada.</p>
+                    </div>
+                </div>
+
+                <div class="painel">
+                    <div class="painel-cabecalho">
+                        <h3>Resumo financeiro</h3>
+                        <span>Movimentações</span>
+                    </div>
+
+                    <div class="mensagem-vazia">
+                        <span>R$</span>
+                        <p>Nenhuma movimentação registrada.</p>
+                    </div>
+                </div>
+
+            </section>
+
+            <footer class="rodape">
+                Impulse Fit © 2026 — Sistema de Gestão de Academia
+            </footer>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
