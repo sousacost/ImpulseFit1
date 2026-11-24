@@ -1,0 +1,353 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impulse Fit | Matrículas</title>
+    <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+</head>
+<body>
+
+<div class="container">
+
+    <aside class="sidebar">
+        <div class="logo">IMPULSE <span>FIT</span></div>
+        <p class="menu-titulo">MENU PRINCIPAL</p>
+
+        <nav>
+            <a href="{% url 'inicio' %}">▦ Dashboard</a>
+            <a href="{% url 'alunos' %}">♙ Alunos</a>
+            <a href="{% url 'matriculas' %}" class="ativo">▣ Matrículas</a>
+            <a href="{% url 'financeiro' %}">R$ Financeiro</a>
+            <a href="{% url 'treinos' %}">⚑ Treinos</a>
+            <a href="{% url 'produtos' %}">▤ Produtos</a>
+            <a href="{% url 'relatorios' %}">▥ Relatórios</a>
+            <a href="{% url 'configuracoes' %}">⚙ Configurações</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <span class="status"></span>
+            Sistema Impulse Fit
+            <small>Gestão de academia</small>
+        </div>
+    </aside>
+
+    <main class="conteudo">
+
+        <header class="topbar">
+            <div>
+                <h2>Matrículas</h2>
+                <p>Gerenciamento de matrículas</p>
+            </div>
+
+            <div class="usuario">
+                <div class="avatar">A</div>
+                <div>
+                    <strong>Administrador</strong>
+                    <small>Gestor</small>
+                </div>
+            </div>
+        </header>
+
+        <section class="boas-vindas">
+            <div>
+                <span class="subtitulo">GESTÃO DA ACADEMIA</span>
+                <h1>Controle de <span>Matrículas</span></h1>
+                <p>Gerencie planos, mensalidades e matrículas dos alunos.</p>
+            </div>
+        </section>
+
+        <section class="secao-titulo">
+            <h2>Resumo das matrículas</h2>
+            <p>Indicadores de acompanhamento</p>
+        </section>
+
+        <section class="cards">
+            <div class="card">
+                <div class="card-topo">
+                    <p>Total de matrículas</p>
+                    <span class="icone">▣</span>
+                </div>
+                <h3 id="totalMatriculas">120</h3>
+
+                <small>Matrículas cadastradas</small>
+            </div>
+
+            <div class="card">
+                <div class="card-topo">
+                    <p>Ativas</p>
+                    <span class="icone">✓</span>
+                </div>
+                <h3 id="matriculasAtivas">98</h3>
+                <small>Planos em andamento</small>
+            </div>
+
+            <div class="card">
+                <div class="card-topo">
+                    <p>Pendentes</p>
+                    <span class="icone">!</span>
+                </div>
+                <h3 id="matriculasPendentes">12</h3>
+                <small>Pagamentos pendentes</small>
+            </div>
+
+            <div class="card">
+                <div class="card-topo">
+                    <p>Canceladas</p>
+                    <span class="icone">×</span>
+                </div>
+                <h3 id="matriculasCanceladas"   >10</h3>
+                <small>Matrículas canceladas</small>
+            </div>
+        </section>
+        <!-- FORMULÁRIO DE NOVA MATRÍCULA -->
+<div id="modalMatricula"
+     style="display:none; position:fixed; inset:0;
+     background:rgba(0,0,0,0.8); z-index:1000;
+     justify-content:center; align-items:center; padding:20px;">
+
+    <div style="background:#1c1c1c; padding:30px;
+    border-radius:12px; width:100%; max-width:500px;">
+
+        <h2 style="margin-bottom:20px;">Nova Matrícula</h2>
+
+        <form id="formMatricula">
+
+            <label>Nome do aluno</label>
+            <input type="text" id="nomeAluno"
+                   placeholder="Digite o nome do aluno" required>
+
+            <br><br>
+
+            <label>Plano</label>
+            <select id="planoAluno" required>
+                <option value="">Selecione um plano</option>
+                <option>Mensal</option>
+                <option>Diária</option>
+                <option>3 dias por semana</option>
+            </select>
+
+            <br><br>
+
+            <label>Valor (R$)</label>
+            <input type="number" id="valorAluno"
+                   placeholder="Ex: 100" min="0.01"
+                   step="0.01" required>
+
+            <br><br>
+
+            <label>Data da matrícula</label>
+            <input type="date" id="dataMatricula" required>
+
+            <br><br>
+
+            <div style="display:flex; gap:10px;">
+
+                <button type="submit"
+                    style="background:#ed1c24; color:white;
+                    border:0; padding:12px; border-radius:6px;
+                    cursor:pointer;">
+                    Cadastrar
+                </button>
+
+                <button type="button" onclick="fecharFormulario()"
+                    style="background:#444; color:white;
+                    border:0; padding:12px; border-radius:6px;
+                    cursor:pointer;">
+                    Cancelar
+                </button>
+
+            </div>
+
+        </form>
+    </div>
+</div>
+
+        <section class="painel">
+            <div class="painel-cabecalho">
+    <div>
+        <h3>Lista de matrículas</h3>
+        <span>Registros ilustrativos</span>
+    </div>
+
+    <button type="button" onclick="abrirFormulario()"
+        style="background:#ed1c24; color:white; border:0;
+        padding:12px 18px; border-radius:6px; cursor:pointer;">
+        + Nova Matrícula
+    </button>
+</div>
+            <div style="overflow-x:auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aluno</th>
+                            <th>Plano</th>
+                            <th>Valor</th>
+                            <th>Data</th>
+                            <th>Status</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+
+                    <tbody  id="listaMatriculas">
+                        <tr>
+                            <td>João Silva</td>
+                            <td>Mensal</td>
+                            <td>R$ 100,00</td>
+                            <td>01/11/2026</td>
+                            <td><span class="status">Ativa</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Maria Santos</td>
+                            <td>3 dias por semana</td>
+                            <td>R$ 80,00</td>
+                            <td>05/11/2026</td>
+                            <td><span class="status">Ativa</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Pedro Oliveira</td>
+                            <td>Diária</td>
+                            <td>R$ 20,00</td>
+                            <td>10/11/2026</td>
+                            <td><span class="status">Ativa</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Ana Costa</td>
+                            <td>Mensal</td>
+                            <td>R$ 100,00</td>
+                            <td>12/11/2026</td>
+                            <td><span class="status">Pendente</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer class="rodape">
+            Impulse Fit © 2026 — Sistema de Gestão de Academia
+        </footer>
+
+    </main>
+</div>
+<script>
+
+// Abrir formulário
+function abrirFormulario() {
+    document.getElementById('modalMatricula').style.display = 'flex';
+}
+
+// Fechar formulário
+function fecharFormulario() {
+    document.getElementById('modalMatricula').style.display = 'none';
+}
+
+// Cadastrar matrícula
+document.getElementById('formMatricula').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const nome = document.getElementById('nomeAluno').value;
+    const plano = document.getElementById('planoAluno').value;
+    const valor = Number(document.getElementById('valorAluno').value);
+    const data = document.getElementById('dataMatricula').value;
+
+    const dataFormatada = data.split('-').reverse().join('/');
+
+    const novaLinha = document.createElement('tr');
+
+    novaLinha.innerHTML = `
+    <td>${nome}</td>
+    <td>${plano}</td>
+    <td>R$ ${valor.toFixed(2).replace('.', ',')}</td>
+    <td>${dataFormatada}</td>
+    <td>
+        <select onchange="alterarStatus(this)">
+            <option value="Ativa" selected>Ativa</option>
+            <option value="Pendente">Pendente</option>
+            <option value="Cancelada">Cancelada</option>
+        </select>
+    </td>
+    <td>
+        <button type="button" onclick="excluirMatricula(this)">
+            Excluir
+        </button>
+    </td>
+`;
+
+    document.getElementById('listaMatriculas').appendChild(novaLinha);
+
+    // Atualizar indicadores
+const total = document.getElementById('totalMatriculas');
+const ativas = document.getElementById('matriculasAtivas');
+
+total.textContent = Number(total.textContent) + 1;
+ativas.textContent = Number(ativas.textContent) + 1;
+
+    alert('Matrícula cadastrada com sucesso!');
+
+    document.getElementById('formMatricula').reset();
+    fecharFormulario();
+});
+// Excluir matrícula
+// Excluir matrícula
+function excluirMatricula(botao) {
+
+    const confirmar = confirm('Deseja realmente excluir esta matrícula?');
+
+    if (confirmar) {
+
+        const linha = botao.closest('tr');
+
+        const status = linha.dataset.status || 'Ativa';
+
+        // Atualizar total
+        const total = document.getElementById('totalMatriculas');
+        total.textContent = Number(total.textContent) - 1;
+
+        // Atualizar indicador do status
+        const indicador = document.getElementById(
+            'matriculas' + status + 's'
+        );
+
+        indicador.textContent = Number(indicador.textContent) - 1;
+
+        // Remover linha
+        linha.remove();
+
+        alert('Matrícula excluída com sucesso!');
+    }
+}// Alterar status da matrícula
+function alterarStatus(select) {
+
+    const linha = select.closest('tr');
+
+    const statusAnterior = linha.dataset.status || 'Ativa';
+    const novoStatus = select.value;
+
+    // Atualizar quantidade do status anterior
+    const indicadorAnterior = document.getElementById(
+        'matriculas' + statusAnterior + 's'
+    );
+
+    // Atualizar quantidade do novo status
+    const indicadorNovo = document.getElementById(
+        'matriculas' + novoStatus + 's'
+    );
+
+    indicadorAnterior.textContent =
+        Number(indicadorAnterior.textContent) - 1;
+
+    indicadorNovo.textContent =
+        Number(indicadorNovo.textContent) + 1;
+
+    // Guardar o novo status
+    linha.dataset.status = novoStatus;
+}
+</script>
+
+</body>
+</html>

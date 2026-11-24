@@ -1,0 +1,76 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impulse Fit | {{ titulo }}</title>
+    <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+</head>
+<body>
+
+<div class="container">
+
+    <aside class="sidebar">
+        <div class="logo">IMPULSE <span>FIT</span></div>
+
+        <p class="menu-titulo">MENU PRINCIPAL</p>
+
+        <nav>
+            <a href="{% url 'inicio' %}">▦ Dashboard</a>
+            <a href="{% url 'alunos' %}">♙ Alunos</a>
+            <a href="{% url 'matriculas' %}">▣ Matrículas</a>
+            <a href="{% url 'financeiro' %}">R$ Financeiro</a>
+            <a href="{% url 'treinos' %}">⚑ Treinos</a>
+            <a href="{% url 'produtos' %}">▤ Produtos</a>
+            <a href="{% url 'relatorios' %}">▥ Relatórios</a>
+            <a href="{% url 'configuracoes' %}">⚙ Configurações</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <span class="status"></span>
+            Sistema Impulse Fit
+            <small>Gestão de academia</small>
+        </div>
+    </aside>
+
+    <main class="conteudo">
+
+        <header class="topbar">
+            <div>
+                <h2>{{ titulo }}</h2>
+                <p>Gerenciamento da academia</p>
+            </div>
+
+            <div class="usuario">
+                <div class="avatar">A</div>
+                <div>
+                    <strong>Administrador</strong>
+                    <small>Gestor</small>
+                </div>
+            </div>
+        </header>
+
+        <section class="boas-vindas">
+            <div>
+                <span class="subtitulo">IMPULSE FIT</span>
+                <h1>{{ titulo }}</h1>
+                <p>Gerencie as informações da sua academia.</p>
+            </div>
+        </section>
+
+        <section class="painel">
+            <h2>{{ titulo }}</h2>
+            <p>Esta página está sendo preparada.</p>
+        </section>
+
+        <footer class="rodape">
+            Impulse Fit © 2026 — Sistema de Gestão de Academia
+        </footer>
+
+    </main>
+</div>
+
+</body>
+</html>

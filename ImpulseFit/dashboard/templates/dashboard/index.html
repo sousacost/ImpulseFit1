@@ -22,19 +22,41 @@
 
             <p class="menu-titulo">MENU PRINCIPAL</p>
 
-            <nav>
-                <a href="#" class="ativo">
-                    <span>▦</span> Dashboard
-                </a>
+          
+<nav>
+    <a href="{% url 'inicio' %}" class="ativo">
+        <span>▦</span> Dashboard
+    </a>
 
-                <a href="#"><span>♙</span> Alunos</a>
-                <a href="#"><span>▣</span> Matrículas</a>
-                <a href="#"><span>R$</span> Financeiro</a>
-                <a href="#"><span>⚑</span> Treinos</a>
-                <a href="#"><span>▤</span> Produtos</a>
-                <a href="#"><span>▥</span> Relatórios</a>
-                <a href="#"><span>⚙</span> Configurações</a>
-            </nav>
+    <a href="{% url 'alunos' %}">
+        <span>♙</span> Alunos
+    </a>
+
+    <a href="{% url 'matriculas' %}">
+        <span>▣</span> Matrículas
+    </a>
+
+    <a href="{% url 'financeiro' %}">
+        <span>R$</span> Financeiro
+    </a>
+
+    <a href="{% url 'treinos' %}">
+        <span>⚑</span> Treinos
+    </a>
+
+    <a href="{% url 'produtos' %}">
+        <span>▤</span> Produtos
+    </a>
+
+    <a href="{% url 'relatorios' %}">
+        <span>▥</span> Relatórios
+    </a>
+
+    <a href="{% url 'configuracoes' %}">
+        <span>⚙</span> Configurações
+    </a>
+</nav>
+
 
             <div class="sidebar-footer">
                 <span class="status"></span>
@@ -74,73 +96,79 @@
                 <p>Resumo da sua academia</p>
             </section>
 
-            <section class="cards">
+            
+<section class="cards">
 
-                <div class="card">
-                    <div class="card-topo">
-                        <p>Total de alunos</p>
-                        <span class="icone">♙</span>
-                    </div>
-                    <h3>0</h3>
-                    <small>Alunos cadastrados</small>
-                </div>
+    <div class="card">
+        <div class="card-topo">
+            <p>Total de alunos</p>
+            <span class="icone">♙</span>
+        </div>
+        <h3>120</h3>
+        <small>Alunos cadastrados</small>
+    </div>
 
-                <div class="card">
-                    <div class="card-topo">
-                        <p>Alunos ativos</p>
-                        <span class="icone">✓</span>
-                    </div>
-                    <h3>0</h3>
-                    <small>Matrículas ativas</small>
-                </div>
+    <div class="card">
+        <div class="card-topo">
+            <p>Alunos ativos</p>
+            <span class="icone">✓</span>
+        </div>
+        <h3>98</h3>
+        <small>Matrículas ativas</small>
+    </div>
 
-                <div class="card">
-                    <div class="card-topo">
-                        <p>Mensalidades recebidas</p>
-                        <span class="icone">R$</span>
-                    </div>
-                    <h3 class="destaque">R$ 0,00</h3>
-                    <small>Valores recebidos</small>
-                </div>
+    <div class="card">
+        <div class="card-topo">
+            <p>Mensalidades recebidas</p>
+            <span class="icone">R$</span>
+        </div>
+        <h3 class="destaque">R$ 8.500,00</h3>
+        <small>Valores recebidos no mês</small>
+    </div>
 
-                <div class="card">
-                    <div class="card-topo">
-                        <p>Produtos cadastrados</p>
-                        <span class="icone">▤</span>
-                    </div>
-                    <h3>0</h3>
-                    <small>Itens no estoque</small>
-                </div>
+    <div class="card">
+        <div class="card-topo">
+            <p>Produtos cadastrados</p>
+            <span class="icone">▤</span>
+        </div>
+        <h3>35</h3>
+        <small>Itens no estoque</small>
+    </div>
 
-            </section>
+</section>
 
-            <section class="painel-inferior">
+            
+<section class="painel-inferior">
 
-                <div class="painel">
-                    <div class="painel-cabecalho">
-                        <h3>Atividades recentes</h3>
-                        <span>Últimas atualizações</span>
-                    </div>
+    <div class="painel">
+        <div class="painel-cabecalho">
+            <h3>Atividades recentes</h3>
+            <span>Últimas atualizações</span>
+        </div>
 
-                    <div class="mensagem-vazia">
-                        <span>▦</span>
-                        <p>Nenhuma atividade registrada.</p>
-                    </div>
-                </div>
+        <div class="mensagem-vazia">
+            <p>✓ João Silva realizou uma matrícula.</p>
+            <p>✓ Maria Santos efetuou o pagamento.</p>
+            <p>✓ Pedro Oliveira foi cadastrado.</p>
+        </div>
+    </div>
 
-                <div class="painel">
-                    <div class="painel-cabecalho">
-                        <h3>Resumo financeiro</h3>
-                        <span>Movimentações</span>
-                    </div>
+    <div class="painel">
+        <div class="painel-cabecalho">
+            <h3>Resumo financeiro</h3>
+            <span>Movimentações do mês</span>
+        </div>
 
-                    <div class="mensagem-vazia">
-                        <span>R$</span>
-                        <p>Nenhuma movimentação registrada.</p>
-                    </div>
-                </div>
+        <div class="mensagem-vazia">
+            <p>Mensalidades: R$ 7.000,00</p>
+            <p>Diárias: R$ 1.000,00</p>
+            <p>Produtos: R$ 500,00</p>
+            <p><strong>Total: R$ 8.500,00</strong></p>
+        </div>
+    </div>
 
-            </section>
+</section>
+
 
             <footer class="rodape">
                 Impulse Fit © 2026 — Sistema de Gestão de Academia
